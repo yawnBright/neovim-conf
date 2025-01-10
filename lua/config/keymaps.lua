@@ -4,24 +4,41 @@
 -- vim.keymap.del({ "n", "i", "s" }, "<esc>")
 
 --- jk -> esc
-vim.keymap.set({ "i", "n", "s", "v" }, "jk", function()
+vim.keymap.set({ "i", "n", "s", "v" }, "xx", function()
   vim.cmd("noh")
   LazyVim.cmp.actions.snippet_stop()
   return "<esc>"
 end, { expr = true, desc = "Escape and Clear hlsearch" })
 
---- 光标跳转到行首
-vim.keymap.set({ "i" }, "bb", "<esc>0i")
-vim.keymap.set({ "n" }, "bb", "0")
-vim.keymap.set({ "v" }, "bb", "<esc>0v")
-
---- 光标跳转到行尾
-vim.keymap.set({ "i" }, "ee", "<esc>$i")
-vim.keymap.set({ "n" }, "ee", "$")
-vim.keymap.set({ "v" }, "ee", "<esc>$v")
+--- --- 光标跳转到行首
+--- vim.keymap.set({ "i" }, "bb", "<esc>0i")
+--- vim.keymap.set({ "n" }, "bb", "0")
+--- vim.keymap.set({ "v" }, "bb", "<esc>0v")
+---
+--- --- 光标跳转到行尾
+--- vim.keymap.set({ "i" }, "ee", "<esc>$i")
+--- vim.keymap.set({ "n" }, "ee", "$")
+--- vim.keymap.set({ "v" }, "ee", "<esc>$v")
 
 --- 全选
 vim.keymap.set({ "i", "n", "v" }, "<C-a>", "<esc>ggVG", { desc = "Select all" })
+
+---
+vim.keymap.set("n", "<C-Left>", "<C-w>h")
+vim.keymap.set("n", "<C-Right>", "<C-w>l")
+vim.keymap.set("n", "<C-Up>", "<C-w>k")
+vim.keymap.set("n", "<C-Down>", "<C-w>j")
+
+vim.keymap.set("n", "<C-h>", "<C-w>>")
+vim.keymap.set("n", "<C-j>", "<C-w>-")
+vim.keymap.set("n", "<C-k>", "<C-w>+")
+vim.keymap.set("n", "<C-l>", "<C-w><")
+
+vim.keymap.set("n", "<S-Left>", "<cmd>bprev<CR>")
+vim.keymap.set("n", "<S-Right>", "<cmd>bnext<CR>")
+
+vim.keymap.set({ "v" }, "<C-c>", "y")
+vim.keymap.set({ "n" }, "<C-c>", "p")
 
 local builtin = require("telescope.builtin")
 local function get_current_file_extension()
