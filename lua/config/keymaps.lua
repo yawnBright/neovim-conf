@@ -3,22 +3,12 @@
 -- Add any additional keymaps here
 -- vim.keymap.del({ "n", "i", "s" }, "<esc>")
 
---- jk -> esc
+--- xx -> esc
 vim.keymap.set({ "i", "n", "s", "v" }, "xx", function()
   vim.cmd("noh")
   LazyVim.cmp.actions.snippet_stop()
   return "<esc>"
 end, { expr = true, desc = "Escape and Clear hlsearch" })
-
---- --- 光标跳转到行首
---- vim.keymap.set({ "i" }, "bb", "<esc>0i")
---- vim.keymap.set({ "n" }, "bb", "0")
---- vim.keymap.set({ "v" }, "bb", "<esc>0v")
----
---- --- 光标跳转到行尾
---- vim.keymap.set({ "i" }, "ee", "<esc>$i")
---- vim.keymap.set({ "n" }, "ee", "$")
---- vim.keymap.set({ "v" }, "ee", "<esc>$v")
 
 --- 全选
 vim.keymap.set({ "i", "n", "v" }, "<C-a>", "<esc>ggVG", { desc = "Select all" })
@@ -70,3 +60,13 @@ vim.keymap.set(
   live_grep_current_extension,
   { desc = "Search globally for a string in files with the same extension as the current file" }
 )
+
+vim.keymap.set("n", "<F7>", function()
+  -- print("f7")
+  require("dap").step_over()
+end, { desc = "Step Over" })
+
+vim.keymap.set("n", "<F8>", function()
+  -- print("f8")
+  require("dap").step_into()
+end, { desc = "Step Into" })
