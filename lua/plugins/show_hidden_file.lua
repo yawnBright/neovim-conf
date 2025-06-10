@@ -1,11 +1,19 @@
 return {
   {
-    "nvim-neo-tree/neo-tree.nvim",
+    "folke/snacks.nvim",
     opts = {
-      filesystem = {
-        filtered_items = {
-          hide_dotfiles = false,
-          hide_gitignored = false,
+      picker = {
+        sources = {
+          files = {
+            hidden = true,
+            ignored = true,
+          },
+          explorer = {
+            -- show hidden files like .env
+            hidden = true,
+            -- show files ignored by git like node_modules
+            ignored = true,
+          },
         },
       },
     },
