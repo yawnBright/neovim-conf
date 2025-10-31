@@ -4,7 +4,13 @@
 -- vim.keymap.del({ "n", "i", "s" }, "<esc>")
 
 --- xx -> esc
-vim.keymap.set({ "i", "n", "s", "v" }, "xx", function()
+--- vim.keymap.set({ "i", "n", "s", "v" }, "xx", function()
+---   vim.cmd("noh")
+---   LazyVim.cmp.actions.snippet_stop()
+---   return "<esc>"
+--- end, { expr = true, desc = "Escape and Clear hlsearch" })
+
+vim.keymap.set({ "i", "n" }, "jk", function()
   vim.cmd("noh")
   LazyVim.cmp.actions.snippet_stop()
   return "<esc>"
